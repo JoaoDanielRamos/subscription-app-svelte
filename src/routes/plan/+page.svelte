@@ -4,6 +4,7 @@
 	import Step2 from '../../components/subscription/steps/Step2.svelte';
 	import Step3 from '../../components/subscription/steps/Step3.svelte';
 	import Step4 from '../../components/subscription/steps/Step4.svelte';
+	import Confirm from '../../components/subscription/steps/Confirm.svelte';
 
 	export let activeStep = 0;
 
@@ -28,5 +29,7 @@
 		<Step3 />
 	{:else if activeStep === 4}
 		<Step4 />
+	{:else if activeStep === 5}
+		<Confirm />
 	{/if}
 </section>

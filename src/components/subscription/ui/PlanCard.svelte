@@ -16,7 +16,7 @@
 <div
 	class={classNames(
 		'flex flex-col items-start justify-between h-40 p-4 border rounded-md w-36 cursor-pointer hover:border-purple200 hover:bg-Alabaster transition_all_300',
-		$userPlan.plan === planName ? 'border-purple200 bg-gray100' : 'border-gray-200 bg-transparent'
+		$userPlan.plan === planName ? 'border-purple200 bg-gray100' : 'border-gray200 bg-transparent'
 	)}
 	on:click={updatePlan}
 >

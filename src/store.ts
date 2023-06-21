@@ -8,7 +8,8 @@ export const steps = writable([
 		active: false
 	},
 	{ number: 3, name: 'add-ons', active: false },
-	{ number: 4, name: 'summary', active: false }
+	{ number: 4, name: 'summary', active: false },
+	{ number: 5, name: 'enjoy!', active: false }
 ]);
 
 export const userPlan = writable({

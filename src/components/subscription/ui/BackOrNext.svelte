@@ -41,7 +41,12 @@
 	}
 </script>
 
-<div class="flex items-center justify-between w-full py-4">
+<div
+	class={classnames(
+		'flex items-center justify-between w-full py-4',
+		$steps.at(-1)?.active && 'hidden'
+	)}
+>
 	<button
 		class={classnames(
 			'font-bold text-gray300 fade_in_1000 py-4 select-none hover:text-purple200 transition_all_300 border border-transparent',
@@ -54,6 +59,6 @@
 		class={classnames(
 			'px-10 fade_in_1000 py-4 ml-auto font-bold rounded-md bg-blue200 border border-transparent text-white select-none hover:border-blue200 hover:bg-white hover:text-blue200 transition_all_300'
 		)}
-		on:click={nextStep}>{$steps.at(-1)?.active ? 'Confirm' : 'Next Step'}</button
+		on:click={nextStep}>{$steps.at(-2)?.active ? 'Confirm' : 'Next Step'}</button
 	>
 </div>
