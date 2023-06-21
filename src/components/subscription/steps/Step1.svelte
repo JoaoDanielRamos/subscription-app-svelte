@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Heading from '../ui/Heading.svelte';
-	import Subheading from '../ui/Subheading.svelte';
-	import Input from '../ui/Input.svelte';
-	import { userPlan } from '../../store';
+	import Heading from '../../ui/Heading.svelte';
+	import Subheading from '../../ui/Subheading.svelte';
+	import Input from '../../ui/Input.svelte';
+	import { userPlan } from '../../../store';
 
 	function updateName(event: { target: { value: string } }) {
 		let name = event.target.value;

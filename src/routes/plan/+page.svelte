@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { steps } from '../../store';
-	import Step1 from '../../components/steps/Step1.svelte';
-	import Step2 from '../../components/steps/Step2.svelte';
-	import Step3 from '../../components/steps/Step3.svelte';
-	import Step4 from '../../components/steps/Step4.svelte';
+	import Step1 from '../../components/subscription/steps/Step1.svelte';
+	import Step2 from '../../components/subscription/steps/Step2.svelte';
+	import Step3 from '../../components/subscription/steps/Step3.svelte';
+	import Step4 from '../../components/subscription/steps/Step4.svelte';
 
 	export let activeStep = 0;
 

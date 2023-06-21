@@ -2,6 +2,6 @@
 	export let text: string;
 </script>
 
-<p class="mb-10 text-Cool-gray">
+<p class="mb-10 text-gray300">
 	{text}
 </p>

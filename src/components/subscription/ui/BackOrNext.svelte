@@ -1,6 +1,6 @@
 <script lang="ts">
 	import classnames from 'classnames';
-	import { steps } from '../store';
+	import { steps } from '../../../store';
 
 	export function nextStep() {
 		steps.update((currentSteps) => {
@@ -44,7 +44,7 @@
 <div class="flex items-center justify-between w-full py-4">
 	<button
 		class={classnames(
-			'font-bold text-Cool-gray fade_in_1000 py-4 select-none hover:text-Purplish-blue transition_all_300 border border-transparent',
+			'font-bold text-gray300 fade_in_1000 py-4 select-none hover:text-purple200 transition_all_300 border border-transparent',
 			$steps.at(0)?.active && 'hidden'
 		)}
 		on:click={goBack}>Go Back</button
@@ -52,7 +52,7 @@
 
 	<button
 		class={classnames(
-			'px-10 fade_in_1000 py-4 ml-auto font-bold rounded-md bg-Marine-blue border border-transparent text-White select-none hover:border-Marine-blue hover:bg-White hover:text-Marine-blue transition_all_300'
+			'px-10 fade_in_1000 py-4 ml-auto font-bold rounded-md bg-blue200 border border-transparent text-white select-none hover:border-blue200 hover:bg-white hover:text-blue200 transition_all_300'
 		)}
 		on:click={nextStep}>{$steps.at(-1)?.active ? 'Confirm' : 'Next Step'}</button
 	>

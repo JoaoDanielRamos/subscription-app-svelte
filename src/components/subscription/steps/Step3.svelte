@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Heading from '../ui/Heading.svelte';
-	import Subheading from '../ui/Subheading.svelte';
+	import Heading from '../../ui/Heading.svelte';
+	import Subheading from '../../ui/Subheading.svelte';
 	import AddOn from '../ui/AddOn.svelte';
-	import { userPlan } from '../../store';
 
-	import { toggleAddOn } from '../../store';
+	import { toggleAddOn } from '../../../store';
 
 	export const addOns = [
 		{

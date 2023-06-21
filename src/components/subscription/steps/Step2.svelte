@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { userPlan } from '../../store';
+	import { userPlan } from '../../../store';
 	import classNames from 'classnames';
-	import Heading from '../ui/Heading.svelte';
-	import Subheading from '../ui/Subheading.svelte';
+	import Heading from '../../ui/Heading.svelte';
+	import Subheading from '../../ui/Subheading.svelte';
 	import PlanCard from '../ui/PlanCard.svelte';
 	import arcade from '$lib/assets/icon-arcade.svg';
 	import advanced from '$lib/assets/icon-advanced.svg';
@@ -49,11 +49,11 @@
 		{/each}
 	</div>
 
-	<div class="flex items-center justify-center w-full h-12 gap-6 rounded bg-Magnolia">
+	<div class="flex items-center justify-center w-full h-12 gap-6 rounded bg-gray100">
 		<p
 			class={classNames(
 				'transition_all_300',
-				$userPlan.paymentFrequency === 'monthly' ? 'text-Marine-blue' : 'text-Cool-gray'
+				$userPlan.paymentFrequency === 'monthly' ? 'text-blue200' : 'text-gray300'
 			)}
 		>
 			monthly
@@ -61,12 +61,12 @@
 
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
-			class="w-[38px] h-5 rounded-full bg-Marine-blue relative cursor-pointer transition_all_300"
+			class="w-[38px] h-5 rounded-full bg-blue200 relative cursor-pointer transition_all_300"
 			on:click={updatePaymentFrequency}
 		>
 			<div
 				class={classNames(
-					'absolute w-3 h-3 -translate-y-1/2 rounded-full bg-White top-1/2 transition_all_300',
+					'absolute w-3 h-3 -translate-y-1/2 rounded-full bg-white top-1/2 transition_all_300',
 					$userPlan.paymentFrequency === 'monthly' ? 'left-[15%]' : 'left-[55%]'
 				)}
 			/>
@@ -75,7 +75,7 @@
 		<p
 			class={classNames(
 				'transition_all_300',
-				$userPlan.paymentFrequency === 'yearly' ? 'text-Marine-blue' : 'text-Cool-gray'
+				$userPlan.paymentFrequency === 'yearly' ? 'text-blue200' : 'text-gray300'
 			)}
 		>
 			yearly
