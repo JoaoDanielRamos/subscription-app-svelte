@@ -1,11 +1,9 @@
 <script lang="ts">
+	import data from '../../../data.json';
+	import { updateAddOns } from '../../../stores/userPlanStore';
 	import Heading from '../../ui/Heading.svelte';
 	import Subheading from '../../ui/Subheading.svelte';
 	import AddOn from '../ui/AddOn.svelte';
-
-	import { toggleAddOn } from '../../../store';
-
-	import data from '../../../data.json';
 
 	export const addOns = data['add-ons'];
 </script>
@@ -20,7 +18,7 @@
 				name={addOn.name}
 				description={addOn.description}
 				price={addOn.price}
-				onClick={() => toggleAddOn(addOn.name)}
+				onClick={() => updateAddOns(addOn.name)}
 			/>
 		{/each}
 	</div>

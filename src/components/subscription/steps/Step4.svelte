@@ -1,6 +1,13 @@
 <script lang="ts">
 	import Heading from '../../ui/Heading.svelte';
 	import Subheading from '../../ui/Subheading.svelte';
+	import { userPlan } from '../../../stores/userPlanStore';
+	import { sendToStep } from '../../../stores/stepsStore';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		console.log($userPlan);
+	});
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -11,8 +18,8 @@
 	<div class="px-6 pt-4 pb-6 mb-6 rounded-md bg-gray100">
 		<div class="flex items-center justify-between">
 			<div>
-				<p class="text-lg font-medium text-blue200">Arcade (Montly)</p>
-				<p class="underline text-gray300">Change</p>
+				<p class="text-lg font-medium text-blue200">Arcade (Monthly)</p>
+				<button class="underline text-gray300" on:click={() => sendToStep(2)}>Change</button>
 			</div>
 
 			<p class="text-lg font-semibold">$9/mo</p>

@@ -4,7 +4,7 @@
 	import pro from '$lib/assets/icon-pro.svg';
 	import classNames from 'classnames';
 	import data from '../../../data.json';
-	import { updatePaymentFrequency, userPlan } from '../../../store';
+	import { updatePaymentFrequency, userPlan } from '../../../stores/userPlanStore';
 	import Heading from '../../ui/Heading.svelte';
 	import Subheading from '../../ui/Subheading.svelte';
 	import PlanCard from '../ui/PlanCard.svelte';
@@ -27,7 +27,7 @@
 		<p
 			class={classNames(
 				'transition_all_300',
-				$userPlan.paymentFrequency === 'monthly' ? 'text-blue200' : 'text-gray300'
+				$userPlan.summary.frequency === 'monthly' ? 'text-blue200' : 'text-gray300'
 			)}
 		>
 			monthly
@@ -41,7 +41,7 @@
 			<div
 				class={classNames(
 					'absolute w-3 h-3 -translate-y-1/2 rounded-full bg-white top-1/2 transition_all_300',
-					$userPlan.paymentFrequency === 'monthly' ? 'left-[15%]' : 'left-[55%]'
+					$userPlan.summary.frequency === 'monthly' ? 'left-[15%]' : 'left-[55%]'
 				)}
 			/>
 		</div>
@@ -49,7 +49,7 @@
 		<p
 			class={classNames(
 				'transition_all_300',
-				$userPlan.paymentFrequency === 'yearly' ? 'text-blue200' : 'text-gray300'
+				$userPlan.summary.frequency === 'yearly' ? 'text-blue200' : 'text-gray300'
 			)}
 		>
 			yearly

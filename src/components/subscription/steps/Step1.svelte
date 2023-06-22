@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { updatePersonalInfo, userPlan } from '../../../store';
+	import { updatePersonalInfo, userPlan } from '../../../stores/userPlanStore';
 	import Heading from '../../ui/Heading.svelte';
 	import Subheading from '../../ui/Subheading.svelte';
 	import Input from '../../ui/Input.svelte';

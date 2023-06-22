@@ -1,7 +1,7 @@
 <script lang="ts">
 	import checkmark from '$lib/assets/icon-checkmark.svg';
 	import classNames from 'classnames';
-	import { userPlan } from '../../../store';
+	import { userPlan } from '../../../stores/userPlanStore';
 
 	export let name: string;
 	export let description: string;
@@ -16,17 +16,21 @@
 <div
 	class={classNames(
 		'flex items-center w-full h-20 px-4 py-6 border rounded cursor-pointer hover:border-purple200 transition_all_300',
-		$userPlan.addOns.includes(name) ? 'border-purple200 bg-gray100' : 'border-gray200'
+		$userPlan.summary.addOns.some((AddOn) => AddOn.name === name)
+			? 'border-purple200 bg-gray100'
+			: 'border-gray200'
 	)}
 	on:click={onClick}
 >
 	<div
 		class={classNames(
 			'w-5 h-5 border rounded border-gray200 flex items-center justify-center transition_all_300',
-			$userPlan.addOns.includes(name) ? 'bg-purple200' : 'bg-transparent'
+			$userPlan.summary.addOns.some((AddOn) => AddOn.name === name)
+				? 'bg-purple200'
+				: 'bg-transparent'
 		)}
 	>
-		{#if $userPlan.addOns.includes(name)}
+		{#if $userPlan.summary.addOns.some((AddOn) => AddOn.name === name)}
 			<img src={checkmark} alt="icon checkmark" class="fade_in_300" />
 		{/if}
 	</div>
@@ -37,7 +41,7 @@
 	</div>
 
 	<p class="ml-auto text-purple200">
-		${$userPlan.paymentFrequency === 'monthly'
+		${$userPlan.summary.frequency === 'monthly'
 			? price.monthly
 			: price.yearly}/{$userPlan.paymentFrequency === 'monthly' ? 'mo' : 'yr'}
 	</p>
