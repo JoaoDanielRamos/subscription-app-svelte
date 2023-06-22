@@ -13,25 +13,63 @@ export const steps = writable([
 ]);
 
 export const userPlan = writable({
-	name: '',
-	email: '',
-	phone: '',
+	name: undefined,
+	email: undefined,
+	phone: undefined,
 	plan: 'arcade',
 	paymentFrequency: 'monthly',
-	addOns: []
+	addOns: [],
+	total: undefined
 });
 
-export function toggleAddOn(addOn: string) {
+// * Step 1
+/**
+ * Updates the user personal information properties (name, email, or phone).
+ * @param {string} field - The field to update (name, email, or phone).
+ * @param {ChangeEvent<HTMLInputElement>} event - The change event object.
+ */
+export function updatePersonalInfo(field: string, event: ChangeEvent<HTMLInputElement>) {
+	const { value } = event.target;
+	userPlan.update((plan) => ({ ...plan, [field]: value }));
+}
+
+// * Step 2
+/**
+ * Updates the plan property of the user plan.
+ * @param {string} planName - The new plan name.
+ */
+export function updatePlan(planName) {
+	userPlan.update((plan) => ({ ...plan, plan: planName }));
+}
+
+/**
+ * Toggles the payment frequency between monthly and yearly in the user plan.
+ */
+export function updatePaymentFrequency() {
+	userPlan.update((plan) => ({
+		...plan,
+		paymentFrequency: plan.paymentFrequency === 'monthly' ? 'yearly' : 'monthly'
+	}));
+}
+
+// * Step 3
+/**
+ * Toggles the specified add-on in the user plan's add-ons array.
+ * @param {string} addOn - The add-on to toggle.
+ */
+export function toggleAddOn(addOn) {
 	userPlan.update((state) => {
-		const addOnIndex = state.addOns.indexOf(addOn);
-		let newAddOns = [...state.addOns]; // creating a copy of the addOns array
+		const addOns = [...state.addOns];
+		const addOnIndex = addOns.indexOf(addOn);
+
 		if (addOnIndex === -1) {
 			// addOn does not exist in the array, add it
-			newAddOns.push(addOn);
+			addOns.push(addOn);
 		} else {
 			// addOn exists in the array, remove it
-			newAddOns.splice(addOnIndex, 1);
+			addOns.splice(addOnIndex, 1);
 		}
-		return { ...state, addOns: newAddOns }; // return new state with updated addOns array
+
+		return { ...state, addOns };
 	});
 }

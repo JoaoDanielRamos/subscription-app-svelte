@@ -1,42 +1,16 @@
 <script lang="ts">
-	import { userPlan } from '../../../store';
+	import advanced from '$lib/assets/icon-advanced.svg';
+	import arcade from '$lib/assets/icon-arcade.svg';
+	import pro from '$lib/assets/icon-pro.svg';
 	import classNames from 'classnames';
+	import data from '../../../data.json';
+	import { updatePaymentFrequency, userPlan } from '../../../store';
 	import Heading from '../../ui/Heading.svelte';
 	import Subheading from '../../ui/Subheading.svelte';
 	import PlanCard from '../ui/PlanCard.svelte';
-	import arcade from '$lib/assets/icon-arcade.svg';
-	import advanced from '$lib/assets/icon-advanced.svg';
-	import pro from '$lib/assets/icon-pro.svg';
 
-	export const cards = [
-		{
-			icon: arcade,
-			name: 'arcade',
-			price: 9
-		},
-		{
-			icon: advanced,
-			name: 'advanced',
-			price: 12
-		},
-		{
-			icon: pro,
-			name: 'pro',
-			price: 15
-		}
-	];
-
-	function updatePaymentFrequency() {
-		let paymentFrequency: string = 'monthly'; // default value
-
-		if ($userPlan.paymentFrequency === 'monthly') {
-			paymentFrequency = 'yearly';
-		} else if ($userPlan.paymentFrequency === 'yearly') {
-			paymentFrequency = 'monthly';
-		}
-
-		userPlan.update((plan) => ({ ...plan, paymentFrequency }));
-	}
+	export const plans = data.plans;
+	export const plansImages = { arcade: arcade, advanced: advanced, pro: pro };
 </script>
 
 <div class="fade_in_1000">
@@ -44,8 +18,8 @@
 	<Subheading text={'You have the option of monthly or yearly billing.'} />
 
 	<div class="flex gap-4 mb-8">
-		{#each cards as card}
-			<PlanCard icon={card.icon} planName={card.name} price={card.price} />
+		{#each plans as plan}
+			<PlanCard icon={plansImages[plan.name]} planName={plan.name} price={plan.price} />
 		{/each}
 	</div>
 

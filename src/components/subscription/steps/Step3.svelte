@@ -5,26 +5,9 @@
 
 	import { toggleAddOn } from '../../../store';
 
-	export const addOns = [
-		{
-			name: 'Online service',
-			description: 'Access to multiplayer games',
-			price: '+$1/mo',
-			active: false
-		},
-		{
-			name: 'Larger storage',
-			description: 'Extra 1TB of cloud save',
-			price: '+$2/mo',
-			active: false
-		},
-		{
-			name: 'Customizable profile',
-			description: 'Custom theme on your profile',
-			price: '+$2/mo',
-			active: false
-		}
-	];
+	import data from '../../../data.json';
+
+	export const addOns = data['add-ons'];
 </script>
 
 <div class="fade_in_1000">

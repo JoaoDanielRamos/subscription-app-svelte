@@ -3,10 +3,13 @@
 	import classNames from 'classnames';
 	import { userPlan } from '../../../store';
 
-	export let name: string = '';
-	export let description: string = '';
-	export let price = '';
-	export let onClick = () => {};
+	export let name: string;
+	export let description: string;
+	export let price: {
+		monthly: string;
+		yearly: string;
+	};
+	export let onClick: any;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -33,5 +36,9 @@
 		<p class="text-sm text-gray300">{description}</p>
 	</div>
 
-	<p class="ml-auto text-purple200">{price}</p>
+	<p class="ml-auto text-purple200">
+		${$userPlan.paymentFrequency === 'monthly'
+			? price.monthly
+			: price.yearly}/{$userPlan.paymentFrequency === 'monthly' ? 'mo' : 'yr'}
+	</p>
 </div>
