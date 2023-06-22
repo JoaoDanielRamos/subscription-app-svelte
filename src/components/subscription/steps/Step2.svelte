@@ -10,7 +10,11 @@
 	import PlanCard from '../ui/PlanCard.svelte';
 
 	export const plans = data.plans;
-	export const plansImages = { arcade: arcade, advanced: advanced, pro: pro };
+	export const plansImages: { [key: string]: string } = {
+		arcade: arcade,
+		advanced: advanced,
+		pro: pro
+	};
 </script>
 
 <div class="fade_in_1000">

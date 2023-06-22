@@ -6,8 +6,8 @@
 	export let name: string;
 	export let description: string;
 	export let price: {
-		monthly: string;
-		yearly: string;
+		monthly: number;
+		yearly: number;
 	};
 	export let onClick: any;
 </script>

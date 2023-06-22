@@ -1,19 +1,6 @@
 import { get, writable } from 'svelte/store';
 import data from '../data.json';
 
-interface UserPlanInterface {
-	name: string;
-	email: string;
-	phone: string;
-	summary: {
-		name: string;
-		planPrice: number;
-		frequency: 'monthly' | 'yearly';
-		addOns: { name: string; price: number }[];
-		total: number;
-	};
-}
-
 export const userPlan: UserPlanInterface = writable({
 	name: undefined,
 	email: undefined,
