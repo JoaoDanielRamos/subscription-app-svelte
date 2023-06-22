@@ -4,9 +4,10 @@
 	import { userPlan } from '../../../stores/userPlanStore';
 	import { sendToStep } from '../../../stores/stepsStore';
 	import { onMount } from 'svelte';
+	import { calculateTotal } from '../../../stores/userPlanStore';
 
 	onMount(() => {
-		console.log($userPlan);
+		calculateTotal();
 	});
 </script>
 
@@ -18,29 +19,34 @@
 	<div class="px-6 pt-4 pb-6 mb-6 rounded-md bg-gray100">
 		<div class="flex items-center justify-between">
 			<div>
-				<p class="text-lg font-medium text-blue200">Arcade (Monthly)</p>
+				<p class="text-lg font-medium capitalize text-blue200">
+					{$userPlan.summary.name} ({$userPlan.summary.frequency})
+				</p>
 				<button class="underline text-gray300" on:click={() => sendToStep(2)}>Change</button>
 			</div>
 
-			<p class="text-lg font-semibold">$9/mo</p>
+			<p class="text-lg font-semibold">
+				${$userPlan.summary.planPrice}/{$userPlan.summary.frequency === 'monthly' ? 'mo' : 'yr'}
+			</p>
 		</div>
 
 		<div class="w-full h-px mt-6 mb-4 rounded-full bg-gray300" />
 
-		<div class="flex justify-between mb-4">
-			<p class="text-gray300">Online service</p>
-			<p>+$1/mo</p>
-		</div>
-
-		<div class="flex justify-between">
-			<p class="text-gray300">Online service</p>
-			<p>+$1/mo</p>
-		</div>
+		{#each $userPlan.summary.addOns as addOn}
+			<div class="flex justify-between mb-4">
+				<p class="text-gray300">{addOn.name}</p>
+				<p>${addOn.price}/{$userPlan.summary.frequency === 'monthly' ? 'mo' : 'yr'}</p>
+			</div>
+		{/each}
 	</div>
 
 	<div class="flex justify-between">
-		<p class="text-gray300">Total (per month)</p>
+		<p class="text-gray300">
+			Total (per {$userPlan.summary.frequency === 'monthly' ? 'month' : 'year'})
+		</p>
 
-		<p class="text-2xl font-medium text-purple200">+$12/mo</p>
+		<p class="text-2xl font-medium text-purple200">
+			${$userPlan.summary.total}/{$userPlan.summary.frequency === 'monthly' ? 'mo' : 'yr'}
+		</p>
 	</div>
 </div>

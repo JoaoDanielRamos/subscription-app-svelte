@@ -1,16 +1,29 @@
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import data from '../data.json';
 
-export const userPlan = writable({
+interface UserPlanInterface {
+	name: string;
+	email: string;
+	phone: string;
+	summary: {
+		name: string;
+		planPrice: number;
+		frequency: 'monthly' | 'yearly';
+		addOns: { name: string; price: number }[];
+		total: number;
+	};
+}
+
+export const userPlan: UserPlanInterface = writable({
 	name: undefined,
 	email: undefined,
 	phone: undefined,
 	summary: {
 		name: 'arcade',
-		placePrice: '9',
+		planPrice: 9,
 		frequency: 'monthly',
 		addOns: [],
-		total: []
+		total: undefined
 	}
 });
 
@@ -23,14 +36,14 @@ export function updatePlan(planName) {
 	userPlan.update((state) => {
 		const plan = data.plans.find((plan) => plan.name === planName);
 		const currentFrequency = state.summary.frequency;
-		const placePrice = String(plan.price[currentFrequency]);
+		const planPrice = plan.price[currentFrequency];
 
 		return {
 			...state,
 			summary: {
 				...state.summary,
 				name: planName,
-				placePrice: placePrice
+				planPrice: planPrice
 			}
 		};
 	});
@@ -48,14 +61,14 @@ export function updatePaymentFrequency() {
 			return { ...addOn, price: price };
 		});
 
-		const placePrice = String(plan.price[newFrequency]);
+		const planPrice = plan.price[newFrequency];
 
 		return {
 			...state,
 			summary: {
 				...state.summary,
 				frequency: newFrequency,
-				placePrice: placePrice,
+				planPrice: planPrice,
 				addOns: updatedAddOns
 			}
 		};
@@ -91,4 +104,23 @@ export function updateAddOns(addOnName) {
 			}
 		};
 	});
+}
+
+export function calculateTotal() {
+	const state = get(userPlan);
+	const { planPrice, addOns } = state.summary;
+
+	let total = planPrice;
+
+	for (const addOn of addOns) {
+		total += addOn.price;
+	}
+
+	userPlan.update((value) => ({
+		...value,
+		summary: {
+			...value.summary,
+			total: total
+		}
+	}));
 }
