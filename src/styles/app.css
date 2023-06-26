@@ -12,7 +12,7 @@
 	}
 
 	.text_input {
-		@apply w-full h-12 px-4 mt-2 text-base border rounded border-gray300;
+		@apply w-full h-12 px-4 mt-2 text-base border rounded cursor-pointer border-gray300 focus:outline-none focus:border-purple200;
 	}
 }
 

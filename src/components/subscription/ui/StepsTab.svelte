@@ -15,7 +15,7 @@
 <div class="flex flex-col gap-8 text-white">
 	{#each steps as step}
 		{#if step.number !== 5 || ($activeStep === 5 && step.number === 5)}
-			<div class="flex items-center gap-4">
+			<div class="flex items-center gap-4 fade_in_1000">
 				<p
 					class={classnames(
 						'border border-white w-[33px] h-[33px] rounded-full flex items-center justify-center text-[14px] font-semibold transition_all_300',

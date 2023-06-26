@@ -7,5 +7,5 @@
 </svelte:head>
 
 <section>
-	<a href="/plan/personal-info">Got to plans</a>
+	<a href="/plan">Got to plans</a>
 </section>

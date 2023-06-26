@@ -1,7 +1,7 @@
 import { get, writable } from 'svelte/store';
 import data from '../data.json';
 
-export const userPlan: UserPlanInterface = writable({
+export const userPlan = writable({
 	name: undefined,
 	email: undefined,
 	phone: undefined,
@@ -14,12 +14,14 @@ export const userPlan: UserPlanInterface = writable({
 	}
 });
 
-export function updatePersonalInfo(field, event) {
+// * Step 1
+export function updatePersonalInfo(field: string, event: Event | undefined) {
 	const { value } = event.target;
 	userPlan.update((state) => ({ ...state, [field]: value }));
 }
 
-export function updatePlan(planName) {
+// * Step 2
+export function updatePlan(planName: string) {
 	userPlan.update((state) => {
 		const plan = data.plans.find((plan) => plan.name === planName);
 		const currentFrequency = state.summary.frequency;
@@ -62,7 +64,8 @@ export function updatePaymentFrequency() {
 	});
 }
 
-export function updateAddOns(addOnName) {
+// * Step 3
+export function updateAddOns(addOnName: string) {
 	userPlan.update((state) => {
 		const addOns = [...state.summary.addOns];
 		const addOnIndex = addOns.findIndex((addOn) => addOn.name === addOnName);
@@ -93,6 +96,7 @@ export function updateAddOns(addOnName) {
 	});
 }
 
+// * Step 4
 export function calculateTotal() {
 	const state = get(userPlan);
 	const { planPrice, addOns } = state.summary;
