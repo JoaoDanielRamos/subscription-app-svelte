@@ -22,7 +22,7 @@
 	<div class="flex justify-between">
 		<span>{label}</span>
 
-		{#if error === 'This field is required'}
+		{#if error !== undefined && error !== 'filled'}
 			<span class="font-medium text-red100">{error}</span>
 		{/if}
 	</div>
