@@ -4,7 +4,10 @@
 </script>
 
 <div
-	class={classnames('flex items-center justify-between w-full py-4', $activeStep === 5 && 'hidden')}
+	class={classnames(
+		'flex items-center justify-between w-full py-4 px-4 md:px-0',
+		$activeStep === 5 && 'hidden'
+	)}
 >
 	<button
 		class={classnames(
@@ -15,9 +18,7 @@
 	>
 
 	<button
-		class={classnames(
-			'px-10 fade_in_1000 py-4 ml-auto font-bold rounded-md bg-blue200 border border-transparent text-white select-none hover:border-blue200 hover:bg-white hover:text-blue200 transition_all_300'
-		)}
+		class="px-6 py-4 ml-auto text-sm font-semibold text-white border border-transparent rounded-md select-none md:px-10 md:py-4 md:text-base fade_in_1000 bg-blue200 hover:border-blue200 hover:bg-white hover:text-blue200 transition_all_300"
 		on:click={() => updateStep('increase')}>{$activeStep === 4 ? 'Confirm' : 'Next Step'}</button
 	>
 </div>

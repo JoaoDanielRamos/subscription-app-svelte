@@ -12,10 +12,10 @@
   Each step is displayed with its respective number and name. The active step is highlighted with blue background and white text color. 
   The rendering logic ensures that step 5 is displayed only if it is the active step or if it is not step number 5.
 -->
-<div class="flex flex-col gap-8 text-white">
+<div class="flex gap-8 text-white md:flex-col">
 	{#each steps as step}
 		{#if step.number !== 5 || ($activeStep === 5 && step.number === 5)}
-			<div class="flex items-center gap-4 fade_in_1000">
+			<div class="md:gap-4 md:items-center md:flex fade_in_1000">
 				<p
 					class={classnames(
 						'border border-white w-[33px] h-[33px] rounded-full flex items-center justify-center text-[14px] font-semibold transition_all_300',
@@ -26,8 +26,8 @@
 				</p>
 
 				<div>
-					<p class="text-[12px] uppercase">step {step.number}</p>
-					<p class="text-[14px] font-semibold uppercase">{step.name}</p>
+					<p class="text-[12px] uppercase hidden md:block">step {step.number}</p>
+					<p class="hidden md:block text-[14px] font-semibold uppercase">{step.name}</p>
 				</div>
 			</div>
 		{/if}

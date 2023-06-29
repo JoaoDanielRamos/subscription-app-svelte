@@ -21,7 +21,7 @@
 	<Heading text={'Select your plan'} />
 	<Subheading text={'You have the option of monthly or yearly billing.'} />
 
-	<div class="flex gap-4 mb-8">
+	<div class="flex flex-col gap-4 mb-8 md:flex-row">
 		{#each plans as plan}
 			<PlanCard icon={plansImages[plan.name]} planName={plan.name} price={plan.price} />
 		{/each}
