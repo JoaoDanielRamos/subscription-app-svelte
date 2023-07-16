@@ -1,9 +1,8 @@
 <script lang="ts">
+	import thankYou from '$lib/assets/icon-thank-you.svg';
+	import { userPlan } from '../../../stores/userPlanStore';
 	import Heading from '../../ui/Heading.svelte';
 	import Subheading from '../../ui/Subheading.svelte';
-	import thankYou from '$lib/assets/icon-thank-you.svg';
-	import spinner from '$lib/assets/spinner.gif';
-	import { userPlan } from '../../../stores/userPlanStore';
 
 	let isLoading = true;
 
@@ -17,8 +16,16 @@
 </script>
 
 {#if isLoading}
-	<div class="flex items-center justify-center w-full h-full mt-48">
-		<img src={spinner} alt="Thank you" class="fade_in_1000" />
+	<div class="flex items-center justify-center w-full h-full mt-28 sm:mt-32">
+		<!-- <img src={spinner} alt="Thank you" class="fade_in_1000" /> -->
+		<iframe
+			src="https://giphy.com/embed/wvtt4mtViPOSrLYNFh"
+			width="300"
+			height="300"
+			frameBorder="0"
+			class="giphy-embed"
+			allowFullScreen
+		/>
 	</div>
 {:else}
 	<div class="flex flex-col items-center justify-center h-full mt-36 fade_in_1000">

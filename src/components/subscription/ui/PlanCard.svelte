@@ -1,6 +1,6 @@
 <script lang="ts">
 	import classNames from 'classnames';
-	import { userPlan, updatePlan } from '../../../stores/userPlanStore';
+	import { updatePlan, userPlan } from '../../../stores/userPlanStore';
 
 	export let planName: string;
 	export let price: { monthly: number; yearly: number };
